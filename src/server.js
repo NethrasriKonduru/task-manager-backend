@@ -11,11 +11,11 @@ connectDB();
 const app = express();
 
 // --- START CORS CONFIGURATION FOR PRODUCTION ---
-// Allowed origins list updated with live production URLs
+// Allowed origins list updated with your specific live production URLs
 const allowedOrigins = [
     'http://localhost:5173', 
     'https://task-manager-api-ly73.onrender.com', // Live Backend API
-    'https://task-manager-frontend.onrender.com' // Your ACTUAL live Render frontend URL
+    'https://task-manager-frontend-s0kl.onrender.com' // Your ACTUAL live Render frontend URL
 ]; 
 
 app.use(cors({
