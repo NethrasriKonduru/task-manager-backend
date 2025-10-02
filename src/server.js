@@ -15,7 +15,7 @@ const app = express();
 const allowedOrigins = [
     'http://localhost:5173', 
     'https://task-manager-api-ly73.onrender.com', // Live Backend API
-    'https://task-manager-frontend-s0kl.onrender.com' // Your ACTUAL live Render frontend URL
+    'https://task-manager-frontend-1-veig.onrender.com' // <-- Your FINAL live Render frontend URL
 ]; 
 
 app.use(cors({
