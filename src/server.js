@@ -41,5 +41,28 @@ app.get('/', (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
 
+// --- START ERROR HANDLERS ---
+
+// 404 Not Found Middleware (Must be defined after all routes)
+app.use((req, res, next) => {
+    const error = new Error(`Not Found - ${req.originalUrl}`);
+    res.status(404);
+    next(error);
+});
+
+// Generic Error Handler Middleware
+app.use((err, req, res, next) => {
+    // If status code is 200 (default), set it to 500 (Internal Server Error)
+    const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+    res.status(statusCode);
+    res.json({
+        message: err.message,
+        // Only show stack trace in development
+        stack: process.env.NODE_ENV === 'production' ? null : err.stack,
+    });
+});
+
+// --- END ERROR HANDLERS ---
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
