@@ -33,6 +33,11 @@ app.use(cors({
 
 app.use(express.json());
 
+// API Health Check / Default Route
+app.get('/', (req, res) => {
+    res.send('Task Manager API is running!');
+});
+
 app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
 
